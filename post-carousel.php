@@ -21,7 +21,6 @@ class PostCarousel
 
     public function __construct( $post_options, $owl_options )
     {
-        $this->carousels = [];
         $this->post_options = $post_options;
         $this->owl_options = $owl_options;
 
@@ -30,9 +29,9 @@ class PostCarousel
 
     static function enqueue()
     {
-    wp_enqueue_style( 'post-carousel-owl-carousel', POST_CAROUSEL_URL .'owl-carousel/owl.carousel.min.css', array(), '2.3.4' );        
-    wp_enqueue_style( 'post-carousel-owl-carousel-theme-style', POST_CAROUSEL_URL . 'owl-carousel/owl.theme.default.min.css', array(), '2.3.4' );
-    wp_enqueue_script( 'post-carousel-owl-carousel-js', POST_CAROUSEL_URL .'owl-carousel/owl.carousel.min.js' , array('jquery'),'2.3.4',true);
+     wp_enqueue_style( 'post-carousel-owl-carousel', POST_CAROUSEL_URL .'owl-carousel/owl.carousel.min.css', array(), '2.3.4' );        
+     wp_enqueue_style( 'post-carousel-owl-carousel-theme-style', POST_CAROUSEL_URL . 'owl-carousel/owl.theme.default.min.css', array(), '2.3.4' );
+     wp_enqueue_script( 'post-carousel-owl-carousel-js', POST_CAROUSEL_URL .'owl-carousel/owl.carousel.min.js' , array('jquery'),'2.3.4',true);
     }
 
 
@@ -71,36 +70,3 @@ class PostCarousel
 add_action( 'wp_enqueue_scripts', array( 'PostCarousel', 'enqueue') );
 
 endif;
-
-/*
-
-DOCUMENTATION
-
-
-$args = array(
-    'post_status'   => 'publish',
-    'post_type'     => 'post',
-    'posts_per_page' => -1,
-);
-
-$carousel = new PostCarousel(
-    array(
-        "query_args" => $args,
-        "classes" => "my-slider",
-        "template"  => ""
-    ),
-    array(
-        "loop"              => true,
-        "margin"            => 0,
-        "nav"               => true,
-        "autoplay"          => true,
-        "autoplayTimeout"   => 4000,
-        "responsive"        => array(
-            "0" => array(
-                "items" => 1
-            )
-        )
-    )
-);
-
-*/
